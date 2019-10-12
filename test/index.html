@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="../lib/ajax.js"></script>
+  </head>
+
+  <body>
+    <h1>Hello, world</h1>
+    <script>
+      $ajax({
+        url: '/apis/list',
+        type: 'get',
+        success: function(res, msg, xhr) {
+          console.log(res.data)
+        },
+        error: function(error, msg, xhr) {
+          console.log(msg)
+        },
+        complete: function(xhr, msg) {
+          console.log(msg)
+        }
+      })
+
+      $fetch({
+        url: '/apis/list',
+        type: 'get'
+      }).then(
+        function(res, msg, xhr) {
+          console.log(res.data)
+        },
+        function(error, msg, xhr) {
+          console.log(msg)
+        }
+      )
+
+      $fetch({
+        url: '/apis/update',
+        type: 'post'
+      }).then(function(res) {
+        console.log(res.data)
+      })
+    </script>
+  </body>
+</html>
